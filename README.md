@@ -14,7 +14,6 @@ git clone https://github.com/cosmicjs/cosmicjs-php
 ```php
 <?php
 include("includes/cosmicjs.php");
-$cosmic = new Cosmic;
 
 /* Add
 ================================= */
@@ -25,7 +24,7 @@ $object_string = '{
 	"write_key" : "' . $config->write_key . '"
 }';
 
-$object = $cosmic->addObject($object_string);
+$object = $cosmic_class->addObject($object_string);
 
 
 /* Edit
@@ -37,7 +36,7 @@ $object_string = '{
 	"write_key" : "' . $config->write_key . '"
 }';
 
-$object = $cosmic->editObject($object_string);
+$object = $cosmic_class->editObject($object_string);
 
 
 /* Delete
@@ -47,17 +46,17 @@ $object_string = '{
 	"write_key" : "' . $config->write_key . '"
 }';
 
-$object = $cosmic->deleteObject($object_string);
+$object = $cosmic_class->deleteObject($object_string);
 
 
 /* Get Objects
 ================================= */
-$cosmic_objects = $cosmic->getObjects();
+$cosmic_objects = $cosmic_class->getObjects();
 
 
 /* Get Media
 ================================= */
-$cosmic_media = $cosmic->getMedia();
+$cosmic_media = $cosmic_class->getMedia();
 
 ?>
 ```
