@@ -10,15 +10,10 @@ Check out [examples/basic/index.php](examples/basic/index.php) in this repo.
 ```
 git clone https://github.com/cosmicjs/cosmicjs-php
 ```
-```php
-include("includes/cosmic.php");
-$cosmic = new Cosmic;
-```
-
 ### Usage
 ```php
 <?php
-include("includes/cosmic.php");
+include("includes/cosmicjs.php");
 $cosmic = new Cosmic;
 
 /* Add
@@ -57,12 +52,12 @@ $object = $cosmic->deleteObject($object_string);
 
 /* Get Objects
 ================================= */
-$cosmic_objects = $cosmic->objects->all;
+$cosmic_objects = $cosmic->getObjects();
 
 
 /* Get Media
 ================================= */
-$cosmic_media = $cosmic->media;
+$cosmic_media = $cosmic->getMedia();
 
 ?>
 ```
