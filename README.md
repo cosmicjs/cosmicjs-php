@@ -20,6 +20,7 @@ $cosmic = new Cosmic;
 <?php
 include("includes/cosmic.php");
 $cosmic = new Cosmic;
+
 /* Add
 ================================= */
 $object_string = '{
@@ -28,7 +29,9 @@ $object_string = '{
 	"content" : "here is some test content",
 	"write_key" : "' . $config->write_key . '"
 }';
+
 $object = $cosmic->addObject($object_string);
+
 
 /* Edit
 ================================= */
@@ -38,7 +41,9 @@ $object_string = '{
 	"content" : "here is some NEW test content",
 	"write_key" : "' . $config->write_key . '"
 }';
+
 $object = $cosmic->editObject($object_string);
+
 
 /* Delete
 ================================= */
@@ -46,14 +51,18 @@ $object_string = '{
 	"slug" : "test-title",
 	"write_key" : "' . $config->write_key . '"
 }';
+
 $object = $cosmic->deleteObject($object_string);
+
 
 /* Get Objects
 ================================= */
 $cosmic_objects = $cosmic->objects->all;
 
+
 /* Get Media
 ================================= */
 $cosmic_media = $cosmic->media;
+
 ?>
 ```
