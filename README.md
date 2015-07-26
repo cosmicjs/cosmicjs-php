@@ -1,11 +1,12 @@
 [![Cosmic JS Logo](https://cosmicjs.com/images/marketing/logo-w-brand.jpg)](https://cosmicjs.com/)
-##Cosmic JS Client for PHP
+## Cosmic JS Client for PHP
 
-###Getting started
+### Getting started
 Go to [https://cosmicjs.com](https://cosmicjs.com), create an account and setup a bucket.
 
 Check out [examples/basic/index.php](examples/basic/index.php) in this repo.
 
+### Usage
 ```php
 <?php
 
