@@ -4,7 +4,7 @@
 ### Getting started
 Go to [https://cosmicjs.com](https://cosmicjs.com), create an account and setup a bucket.
 
-Check out [examples/basic/index.php](examples/basic/index.php) in this repo.
+Check out [example.php](example.php) in this repo.
 
 ### Install
 ```
