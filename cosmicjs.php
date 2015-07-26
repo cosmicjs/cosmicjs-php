@@ -1,10 +1,6 @@
 <?php
 
-// Helpers
 include("curl.php");
-
-// Config
-include("config.php");
 
 $curl = new Curl;
 
@@ -111,4 +107,21 @@ class Cosmic {
 
   }
 
+}
+
+$cosmic_class = new Cosmic;
+
+// Init everything
+$cosmic = $cosmic_class->init();
+$cosmic_objects = $cosmic->objects->all;
+
+$cosmic = array();
+
+// Set all metafields to key->value (array)
+foreach($cosmic_objects as $object){
+  $cosmic[$object->slug] = $object;
+  $cosmic[$object->slug]->metafield = array();
+  foreach($cosmic[$object->slug]->metafields as $metafield){
+    $cosmic[$object->slug]->metafield[$metafield->key] = $metafield->value;
+  }
 }
