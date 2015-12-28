@@ -109,10 +109,10 @@ class Cosmic {
 
 }
 
-$cosmic_class = new Cosmic;
+$cosmicjs = new Cosmic;
 
 // Init everything
-$cosmic = $cosmic_class->init();
+$cosmic = $cosmicjs->init();
 $cosmic_objects = $cosmic->objects->all;
 
 $cosmic = array();
