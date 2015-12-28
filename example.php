@@ -18,8 +18,8 @@ include("cosmicjs.php");
 
 /* Get Objects
 ================================= */
-$cosmic_objects = $cosmic_class->getObjects();
+$objects = $cosmicjs->getObjects();
 
-var_dump($cosmic_objects);
+var_dump($objects);
 
 ?>
