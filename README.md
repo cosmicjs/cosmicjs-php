@@ -30,45 +30,45 @@ include("cosmicjs.php");
 /* Add
 ================================= */
 $object_string = '{
-	"type_slug" : "pages",
-	"title" : "Test Title",
-	"content" : "here is some test content",
-	"write_key" : "' . $config->write_key . '"
+  "type_slug" : "pages",
+  "title" : "Test Title",
+  "content" : "here is some test content",
+  "write_key" : "' . $config->write_key . '"
 }';
 
-$object = $cosmic_class->addObject($object_string);
+$object = $cosmicjs->addObject($object_string);
 
 
 /* Edit
 ================================= */
 $object_string = '{
-	"slug" : "test-title",
-	"title" : "New Title",
-	"content" : "here is some NEW test content",
-	"write_key" : "' . $config->write_key . '"
+  "slug" : "test-title",
+  "title" : "New Title",
+  "content" : "here is some NEW test content",
+  "write_key" : "' . $config->write_key . '"
 }';
 
-$object = $cosmic_class->editObject($object_string);
+$object = $cosmicjs->editObject($object_string);
 
 
 /* Delete
 ================================= */
 $object_string = '{
-	"slug" : "test-title",
-	"write_key" : "' . $config->write_key . '"
+  "slug" : "test-title",
+  "write_key" : "' . $config->write_key . '"
 }';
 
-$object = $cosmic_class->deleteObject($object_string);
+$object = $cosmicjs->deleteObject($object_string);
 
 
 /* Get Objects
 ================================= */
-$cosmic_objects = $cosmic_class->getObjects();
+$objects = $cosmicjs->getObjects();
 
 
 /* Get Media
 ================================= */
-$cosmic_media = $cosmic_class->getMedia();
+$media = $cosmicjs->getMedia();
 
 ?>
 ```
