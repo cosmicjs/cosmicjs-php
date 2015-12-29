@@ -27,7 +27,6 @@ $object_string = '{
   "content" : "here is some test content",
   "write_key" : "' . $config->write_key . '"
 }';
-
 $object = $cosmicjs->addObject($object_string);
 
 /* Edit
@@ -38,7 +37,6 @@ $object_string = '{
   "content" : "here is some NEW test content",
   "write_key" : "' . $config->write_key . '"
 }';
-
 $object = $cosmicjs->editObject($object_string);
 
 /* Delete
@@ -47,7 +45,6 @@ $object_string = '{
   "slug" : "test-title",
   "write_key" : "' . $config->write_key . '"
 }';
-
 $object = $cosmicjs->deleteObject($object_string);
 
 /* Get Objects
