@@ -1,127 +1,53 @@
 <?php
-
 include("curl.php");
-
 $curl = new Curl;
-
-class Cosmic {
-
-  // Construct objects
-  private function constructObjects($data){
-    
-    // Get objects
-    $objects = $data->objects;
-    $cosmic = new stdClass();
-    $cosmic->objects = new stdClass();
-    $cosmic->objects->all = $objects;
-
-    foreach($objects as $object){
-      
-      $slug = $object->slug;
-      $type_slug = $object->type_slug;
-
-      if($object->metafields){
-        
-        $metafields = $object->metafields;
-        
-        // Construct metafields
-        foreach($metafields as $metafield){
-          
-          $key = $metafield->key;
-          $object->metafield[$key] = $metafield;
-        }
-      }
-
-      // Construct type
-      $cosmic->objects->type[$type_slug][] = $object;
-
-      $cosmic->object[$slug] = $object;
-
-    }
-
-    return $cosmic;
+class CosmicJS {
+  function __construct(){
+    global $curl;
+    global $config;
+    $this->curl = $curl;
+    $this->config = $config;
+    $this->config->bucket_slug = $config->bucket_slug;
+    $this->config->read_key = $config->read_key;
+    $this->config->write_key = $config->write_key;
+    $this->config->url = "https://api.cosmicjs.com/v1/" . $this->config->bucket_slug;
+    $this->config->objects_url = $this->config->url . "/objects?read_key=" . $this->config->read_key;
+    $this->config->object_url = $this->config->url . "/object/" . $this->config->object_slug . "?read_key=" . $this->config->read_key;
+    $this->config->media_url = $this->config->url . "/media?read_key=" . $this->config->read_key;
+    $this->config->add_object_url = $this->config->url . "/add-object?write_key=" . $this->config->write_key;
+    $this->config->edit_object_url = $this->config->url . "/edit-object?write_key=" . $this->config->write_key;
+    $this->config->delete_object_url = $this->config->url . "/delete-object?write_key=" . $this->config->write_key;
   }
-  
   // Get all objects
   public function getObjects(){
-
-    global $config, $curl;
-    $url = $config->objects_url . "?read_key=" . $config->read_key;
-    $data = json_decode($curl->get($url));
-    
-    $cosmic = $this->constructObjects($data);
-
-    return $cosmic;
-
+    $data = json_decode($this->curl->get($this->config->objects_url));
+    return $data;
   }
-
+  // Get all object
+  public function getObject($object_slug){
+    $this->config->object_slug = $object_slug;
+    $data = json_decode($this->curl->get($this->config->object_url));
+    return $data;
+  }
   // Get media
   public function getMedia(){
-
-    global $config, $curl;
-
-    $data = json_decode($curl->get($config->media_url));
+    $data = json_decode($this->curl->get($this->config->media_url));
     return $data->media;
-
   }
-
-  // Init all
-  public function init(){
-
-    $cosmic = $this->getObjects();
-    $cosmic->media = $this->getMedia();
-    
-    return $cosmic;
-
-  }
-
   // Add object
   public function addObject($params){
-
-    global $config, $curl;
-    $data = $curl->post($config->add_object_url, $params);
-
+    $data = $this->curl->post($this->config->add_object_url, $params);
     return $data;
-
   }
-
   // Edit object
   public function editObject($params){
-
-    global $config, $curl;
-
-    $data = $curl->put($config->edit_object_url, $params);
-
+    $data = $this->curl->put($this->config->edit_object_url, $params);
     return $data;
-
   }
-
   // Delete object
   public function deleteObject($params){
-
-    global $config, $curl;
-
-    $data = $curl->delete($config->delete_object_url, $params);
-
+    $data = $this->curl->delete($this->config->delete_object_url, $params);
     return $data;
-
-  }
-
-}
-
-$cosmicjs = new Cosmic;
-
-// Init everything
-$cosmic = $cosmicjs->init();
-$cosmic_objects = $cosmic->objects->all;
-
-$cosmic = array();
-
-// Set all metafields to key->value (array)
-foreach($cosmic_objects as $object){
-  $cosmic[$object->slug] = $object;
-  $cosmic[$object->slug]->metafield = array();
-  foreach($cosmic[$object->slug]->metafields as $metafield){
-    $cosmic[$object->slug]->metafield[$metafield->key] = $metafield->value;
   }
 }
+$cosmicjs = new CosmicJS;
