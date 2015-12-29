@@ -8,6 +8,7 @@ class CosmicJS {
     $this->curl = $curl;
     $this->config = $config;
     $this->config->bucket_slug = $config->bucket_slug;
+    $this->config->object_slug = $config->object_slug;
     $this->config->read_key = $config->read_key;
     $this->config->write_key = $config->write_key;
     $this->config->url = "https://api.cosmicjs.com/v1/" . $this->config->bucket_slug;
