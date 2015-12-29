@@ -30,7 +30,6 @@ $object_string = '{
 
 $object = $cosmicjs->addObject($object_string);
 
-
 /* Edit
 ================================= */
 $object_string = '{
@@ -42,7 +41,6 @@ $object_string = '{
 
 $object = $cosmicjs->editObject($object_string);
 
-
 /* Delete
 ================================= */
 $object_string = '{
@@ -52,15 +50,12 @@ $object_string = '{
 
 $object = $cosmicjs->deleteObject($object_string);
 
-
 /* Get Objects
 ================================= */
 $objects = $cosmicjs->getObjects();
 
-
 /* Get Media
 ================================= */
 $media = $cosmicjs->getMedia();
-
 ?>
 ```
