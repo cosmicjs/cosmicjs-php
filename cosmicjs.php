@@ -25,8 +25,7 @@ class CosmicJS {
     return $data;
   }
   // Get all object
-  public function getObject($object_slug){
-    $this->config->object_slug = $object_slug;
+  public function getObject(){
     $data = json_decode($this->curl->get($this->config->object_url));
     return $data;
   }
